@@ -1,5 +1,7 @@
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
+from fastapi import FastAPI
 from pydantic import EmailStr, BaseModel
+from typing import List
 
 
 conf = ConnectionConfig(
@@ -15,6 +17,8 @@ conf = ConnectionConfig(
     VALIDATE_CERTS = True
 
 )
+
+app = FastAPI()
 
 @app.post("/email")
 async def send_mail(email:List[str]):
